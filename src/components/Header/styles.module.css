@@ -3,6 +3,7 @@
 .header {
     background: var(--gray-1);
     padding: 2.5rem 0 7.5rem;
+    /* border: 1px solid red; */
     
 }
 
@@ -11,6 +12,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
+    /* border: 1px solid blue; */
 
     display: flex;
     justify-content: space-between;

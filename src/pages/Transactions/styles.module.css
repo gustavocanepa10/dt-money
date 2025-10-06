@@ -1,0 +1,39 @@
+.transactionsContainer {
+    /* border: 1px solid green; */
+    max-width: 1120px;
+    width: 100%;
+    margin: 4rem auto 0;
+    
+
+    
+
+
+
+    
+}
+
+.tableTransactions {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem; 
+    /* border: 1px solid orange; */
+
+
+    td {
+        padding: 1.25rem 2rem;
+        background: var(--gray-3);
+        &:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+
+        }
+
+         &:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+
+        }
+    }
+}
+
+

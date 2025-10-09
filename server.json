@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "id": "927968d6-f0f5-42c6-ad9a-b430a33a347f",
+      "category": "Venda",
+      "price": 50,
+      "description": "Desenvolvimento de Site",
+      "created_At": "9 de out. de 2025",
+      "type": "income"
+    },
+    {
+      "id": "b4897554-32b0-40c1-87bb-82b9d1fac54e",
+      "category": "CUSTO",
+      "price": 25,
+      "description": "Custo do Desenvolvimento de Site",
+      "created_At": "9 de out. de 2025",
+      "type": "outcome"
+    },
+    {
+      "id": "38f3247d-5130-42ad-9e93-86b2ceae043b",
+      "category": "CONTA",
+      "price": 55,
+      "description": "CONTA DE LUZ",
+      "created_At": "9 de out. de 2025",
+      "type": "outcome"
+    }
+  ]
+}

@@ -2,9 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import "./global.css"
 import {App} from './App.tsx'
+import { TransactionContextProvider } from './context/TransactionContext..tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <TransactionContextProvider>
+      <App />
+    </TransactionContextProvider>
+    
   </StrictMode>,
 )

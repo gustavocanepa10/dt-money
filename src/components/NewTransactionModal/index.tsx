@@ -1,9 +1,51 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import styles from "./styles.module.css"
+import * as RadioGroup from "@radix-ui/react-radio-group";
+import styles from "./styles.module.css";
 import { ArrowCircleUp, X } from "phosphor-react";
-import {ArrowCircleDown} from "phosphor-react"
+import { ArrowCircleDown } from "phosphor-react";
+import { useContext, useState } from "react";
+import { TransactionContext } from "../../context/TransactionContext.";
+import { v4 as uuidv4 } from "uuid";
+
+
+
+interface Transaction {
+  id: string;
+  description: string;
+  type: string
+  category: string;
+  price: number;
+  created_At: string;
+}
 
 export function NewTransactionModal() {
+  const { newTransaction } = useContext(TransactionContext);
+
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+  const [category, setCategory] = useState("");
+  const [type, setType] = useState("");
+  
+
+  function handleSubmit() {
+    const newItem: Transaction = {
+      category,
+      price,
+      description,
+      created_At: new Date().toLocaleDateString("pt-BR", {
+        dateStyle : "medium"
+      }),
+      id: uuidv4(),
+      type,
+    };
+
+
+    newTransaction(newItem)
+    
+  }
+  
+  
+  
   return (
     <Dialog.Portal>
       <Dialog.Overlay className={styles.Overlay} />
@@ -12,32 +54,39 @@ export function NewTransactionModal() {
         <Dialog.Title>Nova transação</Dialog.Title>
 
         <Dialog.Close className={styles.ButtonClose}>
-            <X size={24}/>
+          <X size={24} />
         </Dialog.Close>
 
-        <form action="">
-            <input type="text" placeholder="Descrição" required />
-            <input type="number" placeholder="Preço" required />
-            <input type="text" placeholder="Categoria" required />
+        <form onSubmit={handleSubmit} action="">
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            type="text"
+            placeholder="Descrição"
+            required
+          />
+          <input
+            value={price}
+            onChange={(e) => setPrice(Number(e.target.value))}
+            type="number"
+            placeholder="Preço"
+            required
+          />
+          <input value={category} onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Categoria" required />
 
-            <div className={styles.transactionType}>
-                <button>
-                    <ArrowCircleUp size={24} color="#00B37E"/>
-                    Entrada
-                </button>
-                <button>
-                    <ArrowCircleDown size={24} color="#F75A68"/>
-                    Saida
-                </button>
-            </div>
+          <RadioGroup.RadioGroup value={type} onValueChange={setType} className={styles.transactionType}>
+            <RadioGroup.Item className={styles.buttonGreen}  value="income">
+              <ArrowCircleUp size={20} color="#00B37E" />
+              Entrada
+            </RadioGroup.Item>
+            <RadioGroup.Item className={styles.buttonRed} value="outcome">
+              <ArrowCircleDown size={20} color="#F75A68" />
+              Saida
+            </RadioGroup.Item>
+          </RadioGroup.RadioGroup>
 
-
-            <button type="submit">
-                Cadastrar
-            </button>
+          <button  type="submit">Cadastrar</button>
         </form>
-
-        
       </Dialog.Content>
     </Dialog.Portal>
   );

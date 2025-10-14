@@ -37,18 +37,20 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
 
   async function getTransactions() {
       const response = await axios.get("http://localhost:3000/transactions");
-      console.log(response.data);
+      const data = await response.data
+      console.log(data);
 
-      setTransactions(response.data);
+      setTransactions(data);
 
   }
 
  
   useEffect(() => {
     getTransactions()
-  })
+  }, [])
 
   async function newTransaction(newItem: Transaction) {
+    // AQUI ACONTECE O ENVIO PARA JSON-SERVER COM NEWITEM QUE VEIO DO NewTransactionModal
     const response = await axios.post(
       "http://localhost:3000/transactions",
       newItem
@@ -57,6 +59,7 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
     const createditem = response.data;
 
     setTransactions((state) => [...state, createditem]);
+    
     
   }
 

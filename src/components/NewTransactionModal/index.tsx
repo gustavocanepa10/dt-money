@@ -17,7 +17,11 @@ interface Transaction {
   created_At: string;
 }
 
-export function NewTransactionModal() {
+interface NewTransactionProps {
+    setOpen : React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function NewTransactionModal({setOpen} : NewTransactionProps) {
   const { newTransaction } = useContext(TransactionContext);
 
   const [description, setDescription] = useState("");
@@ -25,7 +29,8 @@ export function NewTransactionModal() {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
 
-  function handleSubmit() {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
     const newItem: Transaction = {
       id : uui4(),
       category,
@@ -38,7 +43,12 @@ export function NewTransactionModal() {
       type,
     };
 
-    newTransaction(newItem);
+    await newTransaction(newItem);
+    setDescription("")
+    setCategory("")
+    setPrice(0)
+    setType("")
+    setOpen((open) => !open)
   }
 
  

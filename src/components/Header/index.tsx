@@ -4,8 +4,12 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { NewTransactionModal } from "../NewTransactionModal"
 
 
+interface HeaderProps {
+    open : boolean
+    setOpen : React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export function Header() {
+export function Header({open, setOpen} : HeaderProps) {
 
     
 
@@ -15,12 +19,12 @@ export function Header() {
 
             </div>
 
-            <Dialog.Root>
+            <Dialog.Root open = {open} onOpenChange={setOpen}>
                 <Dialog.DialogTrigger asChild>
                     <button>Nova transação</button>
                 </Dialog.DialogTrigger>
 
-                <NewTransactionModal/>
+                <NewTransactionModal  setOpen = {setOpen} />
             </Dialog.Root>
             
         </div>

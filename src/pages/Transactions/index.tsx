@@ -3,7 +3,7 @@ import { Summary } from "../../components/Summary";
 import styles from "./styles.module.css";
 import { PriceHighlight } from "../../components/PriceHighlight";
 import { SearchForm } from "../../components/SearchForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { TransactionContext } from "../../context/TransactionContext.";
 import { Trash } from "phosphor-react";
@@ -12,9 +12,11 @@ export function Transactions() {
   const { searchState, setSearchState, filterSearchList, deleteTransaction } =
     useContext(TransactionContext);
 
+    const [open, setOpen] = useState(false)
+
   return (
     <div>
-      <Header />
+      <Header open = {open} setOpen = {setOpen} />
       <Summary />
       <SearchForm searchState={searchState} setSearchState={setSearchState} />
       <div className={styles.transactionsContainer}>
@@ -38,7 +40,7 @@ export function Transactions() {
                 </td>
                 <td>{transaction.category.toUpperCase()}</td>
                 <td>{transaction.created_At}
-                 <button onClick={() => deleteTransaction(transaction.id)}>
+                 <button onClick={async () => await deleteTransaction(transaction.id)}>
                  <Trash color="#F75A68" size={20}/>
                 </button>
                 </td>

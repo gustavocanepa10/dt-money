@@ -23,7 +23,7 @@ O projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
 -   **[React](https://reactjs.org/)**: Biblioteca para a construção da interface.
 -   **[TypeScript](https://www.typescriptlang.org/)**: Superset do JavaScript que adiciona tipagem estática.
 -   **[Vite](https://vitejs.dev/)**: Ferramenta de build moderna e ultrarrápida.
--   **[Styled Components](https://styled-components.com/)**: Para estilização dos componentes de forma isolada e dinâmica.
+-   **[CSS Modules](https://styled-components.com/)**: Para estilização de forma isolada e dinâmica.
 -   **[Radix UI](https://www.radix-ui.com/)**: Para a criação de componentes de UI acessíveis e de alta qualidade, como o Dialog (Modal).
 -   **[Phosphor Icons](https://phosphoricons.com/)**: Biblioteca de ícones utilizada na interface.
 -   **[Axios](https://axios-http.com/)**: Para realizar as requisições HTTP à API.

@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+## 📄 Sobre o Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DT Money** é uma aplicação de controle financeiro desenvolvida como parte do Chapter II da trilha de ReactJS do **Ignite**, o programa de aceleração de carreira da [Rocketseat](https://www.rocketseat.com.br/).
 
-Currently, two official plugins are available:
+O objetivo principal do projeto foi aplicar conceitos fundamentais e avançados de React, como componentização, gerenciamento de estado, hooks, manipulação de formulários e consumo de APIs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Cadastro de Transações:** Permite adicionar novas transações de entrada (income) e saída (outcome).
+-   **Listagem e Resumo:** Exibe um resumo financeiro com o total de entradas, saídas e o saldo consolidado.
+-   **Busca de Transações:** Um campo de busca para filtrar transações por descrição.
+-   **Modal Interativo:** Utiliza um modal elegante para o formulário de cadastro, melhorando a experiência do usuário.
+-   **Design Responsivo:** A interface se adapta a diferentes tamanhos de tela.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-   **[React](https://reactjs.org/)**: Biblioteca para a construção da interface.
+-   **[TypeScript](https://www.typescriptlang.org/)**: Superset do JavaScript que adiciona tipagem estática.
+-   **[Vite](https://vitejs.dev/)**: Ferramenta de build moderna e ultrarrápida.
+-   **[Styled Components](https://styled-components.com/)**: Para estilização dos componentes de forma isolada e dinâmica.
+-   **[Radix UI](https://www.radix-ui.com/)**: Para a criação de componentes de UI acessíveis e de alta qualidade, como o Dialog (Modal).
+-   **[Phosphor Icons](https://phosphoricons.com/)**: Biblioteca de ícones utilizada na interface.
+-   **[Axios](https://axios-http.com/)**: Para realizar as requisições HTTP à API.
+-   **[JSON Server](https://github.com/typicode/json-server)**: Para simular uma API REST local para o desenvolvimento.

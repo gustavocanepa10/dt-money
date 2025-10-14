@@ -6,9 +6,10 @@ import { SearchForm } from "../../components/SearchForm";
 import { useContext } from "react";
 
 import { TransactionContext } from "../../context/TransactionContext.";
+import { Trash } from "phosphor-react";
 
 export function Transactions() {
-  const { searchState, setSearchState, filterSearchList } =
+  const { searchState, setSearchState, filterSearchList, deleteTransaction } =
     useContext(TransactionContext);
 
   return (
@@ -37,12 +38,16 @@ export function Transactions() {
                 </td>
                 <td>{transaction.category.toUpperCase()}</td>
                 <td>{transaction.created_At}
+                 <button onClick={() => deleteTransaction(transaction.id)}>
+                 <Trash color="#F75A68" size={20}/>
+                </button>
                 </td>
                 
 
                 
               </tr>
             ))}
+            
           </tbody>
         </table>
       </div>

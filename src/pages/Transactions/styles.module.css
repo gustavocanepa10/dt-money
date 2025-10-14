@@ -33,6 +33,33 @@
          &:last-child {
             border-top-right-radius: 6px;
             border-bottom-right-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                background: transparent;
+                border: 0;
+                cursor: pointer;
+                
+
+
+                &:hover {
+                    transform: scale(1.3);
+                    
+                }
+
+
+                
+            }
+
+
+            
+
+            
+
+           
+
+            
 
         }
     }

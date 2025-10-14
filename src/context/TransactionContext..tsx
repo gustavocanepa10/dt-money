@@ -6,7 +6,7 @@ interface TransactionContextProviderProps {
 }
 
 interface Transaction {
-  id: string;
+  id : string
   description: string;
   type: string
   category: string;
@@ -20,6 +20,7 @@ interface TransactionContextProps {
   filterSearchList: Transaction[];
   newTransaction: (newItem: Transaction) => Promise<void>;
   transactions : Transaction[]
+  deleteTransaction : (id : string) => Promise<void>
 }
 
 export const TransactionContext = createContext({} as TransactionContextProps);
@@ -32,16 +33,20 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
     transactions.description.includes(searchState.toUpperCase())
   );
 
-  useEffect(() => {
-    async function getTransactions() {
+
+
+  async function getTransactions() {
       const response = await axios.get("http://localhost:3000/transactions");
       console.log(response.data);
 
       setTransactions(response.data);
-    }
 
-    getTransactions();
-  }, []);
+  }
+
+ 
+  useEffect(() => {
+    getTransactions()
+  })
 
   async function newTransaction(newItem: Transaction) {
     const response = await axios.post(
@@ -52,12 +57,25 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
     const createditem = response.data;
 
     setTransactions((state) => [...state, createditem]);
-    console.log(transactions)
+    
+  }
+
+  async function deleteTransaction(id : string) {
+
+    await axios.delete(`http://localhost:3000/transactions/${id}`, {
+      
+    })
+    
+    const transactionsDelete = transactions.filter((transactions) => transactions.id !== id)
+    setTransactions(transactionsDelete)
+
+    
+
   }
 
   return (
     <TransactionContext.Provider
-      value={{ searchState, setSearchState, filterSearchList, newTransaction, transactions }}
+      value={{ searchState, setSearchState, filterSearchList, newTransaction, transactions, deleteTransaction }}
     >
       {children}
     </TransactionContext.Provider>

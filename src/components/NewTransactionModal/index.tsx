@@ -5,14 +5,13 @@ import { ArrowCircleUp, X } from "phosphor-react";
 import { ArrowCircleDown } from "phosphor-react";
 import { useContext, useState } from "react";
 import { TransactionContext } from "../../context/TransactionContext.";
-import { v4 as uuidv4 } from "uuid";
-
+import {v4 as uui4} from "uuid"
 
 
 interface Transaction {
-  id: string;
+  id : string
   description: string;
-  type: string
+  type: string;
   category: string;
   price: number;
   created_At: string;
@@ -25,27 +24,25 @@ export function NewTransactionModal() {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
-  
 
   function handleSubmit() {
     const newItem: Transaction = {
+      id : uui4(),
       category,
       price,
       description,
       created_At: new Date().toLocaleDateString("pt-BR", {
-        dateStyle : "medium"
+        dateStyle: "medium",
       }),
-      id: uuidv4(),
+      
       type,
     };
 
-
-    newTransaction(newItem)
-    
+    newTransaction(newItem);
   }
-  
-  
-  
+
+ 
+
   return (
     <Dialog.Portal>
       <Dialog.Overlay className={styles.Overlay} />
@@ -72,10 +69,20 @@ export function NewTransactionModal() {
             placeholder="Preço"
             required
           />
-          <input value={category} onChange={(e) => setCategory(e.target.value)} type="text" placeholder="Categoria" required />
+          <input
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            type="text"
+            placeholder="Categoria"
+            required
+          />
 
-          <RadioGroup.RadioGroup value={type} onValueChange={setType} className={styles.transactionType}>
-            <RadioGroup.Item className={styles.buttonGreen}  value="income">
+          <RadioGroup.RadioGroup
+            value={type}
+            onValueChange={setType}
+            className={styles.transactionType}
+          >
+            <RadioGroup.Item className={styles.buttonGreen} value="income">
               <ArrowCircleUp size={20} color="#00B37E" />
               Entrada
             </RadioGroup.Item>
@@ -85,7 +92,7 @@ export function NewTransactionModal() {
             </RadioGroup.Item>
           </RadioGroup.RadioGroup>
 
-          <button  type="submit">Cadastrar</button>
+          <button type="submit">Cadastrar</button>
         </form>
       </Dialog.Content>
     </Dialog.Portal>

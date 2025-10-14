@@ -1,27 +1,19 @@
 {
   "transactions": [
     {
-      "id": "927968d6-f0f5-42c6-ad9a-b430a33a347f",
-      "category": "Venda",
+      "id": "46914dff-637f-4666-acf4-9073b83d13e5",
+      "category": "VENDA",
       "price": 50,
-      "description": "Desenvolvimento de Site",
-      "created_At": "9 de out. de 2025",
+      "description": "ALGO",
+      "created_At": "14 de out. de 2025",
       "type": "income"
     },
     {
-      "id": "b4897554-32b0-40c1-87bb-82b9d1fac54e",
+      "id": "05618f22-b86a-4a2c-8183-9c8fd8eb4e9d",
       "category": "CUSTO",
-      "price": 25,
-      "description": "Custo do Desenvolvimento de Site",
-      "created_At": "9 de out. de 2025",
-      "type": "outcome"
-    },
-    {
-      "id": "38f3247d-5130-42ad-9e93-86b2ceae043b",
-      "category": "CONTA",
-      "price": 55,
-      "description": "CONTA DE LUZ",
-      "created_At": "9 de out. de 2025",
+      "price": 30,
+      "description": "ALGO2",
+      "created_At": "14 de out. de 2025",
       "type": "outcome"
     }
   ]

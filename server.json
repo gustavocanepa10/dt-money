@@ -1,12 +1,3 @@
 {
-  "transactions": [
-    {
-      "id": "3a656f88-6559-41fa-8fb2-eedca56d107c",
-      "category": "VENDA",
-      "price": 50,
-      "description": "ALGO",
-      "created_At": "14 de out. de 2025",
-      "type": "income"
-    }
-  ]
+  "transactions": []
 }

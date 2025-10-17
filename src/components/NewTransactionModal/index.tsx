@@ -3,9 +3,10 @@ import * as RadioGroup from "@radix-ui/react-radio-group";
 import styles from "./styles.module.css";
 import { ArrowCircleUp, X } from "phosphor-react";
 import { ArrowCircleDown } from "phosphor-react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { TransactionContext } from "../../context/TransactionContext.";
 import {v4 as uui4} from "uuid"
+import { useContextSelector } from "use-context-selector";
 
 
 interface Transaction {
@@ -22,7 +23,9 @@ interface NewTransactionProps {
 }
 
 export function NewTransactionModal({setOpen} : NewTransactionProps) {
-  const { newTransaction } = useContext(TransactionContext);
+  const newTransaction = useContextSelector(TransactionContext, (context) => {
+    return context.newTransaction
+  });
 
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);

@@ -1,10 +1,13 @@
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
 import styles from "./styles.module.css";
-import { useContext } from "react";
+
 import { TransactionContext } from "../../context/TransactionContext.";
+import { useContextSelector } from "use-context-selector";
 
 export function Summary() {
-  const { transactions } = useContext(TransactionContext);
+  const transactions = useContextSelector(TransactionContext, (context) => {
+    return context.transactions
+  });
 
   const incomes = transactions
     .filter((item) => item.type === "income")

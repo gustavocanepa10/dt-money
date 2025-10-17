@@ -1,22 +1,30 @@
 
+import { useContextSelector } from "use-context-selector";
 import styles from "./styles.module.css";
 import { MagnifyingGlass } from "phosphor-react";
+import { TransactionContext } from "../../context/TransactionContext.";
 
-interface SearchFormProps {
-  setSearchState: React.Dispatch<React.SetStateAction<string>>;
-  searchState: string;
-}
 
-export function SearchForm({ searchState, setSearchState }: SearchFormProps) {
-  console.log(searchState);
+export function SearchForm() {
+  
+
+  const searchStateContext = useContextSelector(TransactionContext, (context) => {
+        return context.searchState
+      })
+  
+      const setSearchStateContext = useContextSelector(TransactionContext, (context) => {
+        return context.setSearchState
+      })
+
+
 
   return (
     <form className={styles.searchFormContainer}>
       <input
         type="text"
         placeholder="Buscar uma transação"
-        value={searchState}
-        onChange={(e) => setSearchState(e.target.value)}
+        value={searchStateContext}
+        onChange={(e) => setSearchStateContext(e.target.value)}
       />
 
       <button>

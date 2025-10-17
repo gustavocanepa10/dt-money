@@ -1,5 +1,6 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
+
 
 interface TransactionContextProviderProps {
   children: React.ReactNode;
@@ -35,21 +36,21 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
 
 
 
-  async function getTransactions() {
+  const getTransactions = useCallback(async () => {
       const response = await axios.get("http://localhost:3000/transactions");
       const data = await response.data
       console.log(data);
 
       setTransactions(data);
 
-  }
+  },[])
 
  
   useEffect(() => {
     getTransactions()
   }, [])
 
-  async function newTransaction(newItem: Transaction) {
+const newTransaction = useCallback(async (newItem: Transaction) => {
     // AQUI ACONTECE O ENVIO PARA JSON-SERVER COM NEWITEM QUE VEIO DO NewTransactionModal
     const response = await axios.post(
       "http://localhost:3000/transactions",
@@ -61,9 +62,9 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
     setTransactions((state) => [...state, createditem]);
     
     
-  }
+  }, [setTransactions])
 
-  async function deleteTransaction(id : string) {
+  const deleteTransaction = useCallback(async (id : string) => {
 
     await axios.delete(`http://localhost:3000/transactions/${id}`, {
       
@@ -74,7 +75,9 @@ export function TransactionContextProvider({children,}: TransactionContextProvid
 
     
 
-  }
+  }, [setTransactions])
+
+  
 
   return (
     <TransactionContext.Provider

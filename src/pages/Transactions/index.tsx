@@ -7,10 +7,19 @@ import { useContext, useState } from "react";
 
 import { TransactionContext } from "../../context/TransactionContext.";
 import { Trash } from "phosphor-react";
+import { useContextSelector } from "use-context-selector";
 
 export function Transactions() {
-  const { searchState, setSearchState, filterSearchList, deleteTransaction } =
-    useContext(TransactionContext);
+  
+    
+
+    const filterSearchListContext = useContextSelector(TransactionContext, (context) => {
+      return context.filterSearchList
+    })
+
+    const deleteTransactionContext = useContextSelector(TransactionContext, (context) => {
+      return context.deleteTransaction
+    })
 
     const [open, setOpen] = useState(false)
 
@@ -18,11 +27,11 @@ export function Transactions() {
     <div>
       <Header open = {open} setOpen = {setOpen} />
       <Summary />
-      <SearchForm searchState={searchState} setSearchState={setSearchState} />
+      <SearchForm />
       <div className={styles.transactionsContainer}>
         <table className={styles.tableTransactions}>
           <tbody>
-            {filterSearchList.map((transaction) => (
+            {filterSearchListContext.map((transaction) => (
               <tr key={transaction.id}>
                 <td width="50%">{transaction.description}</td>
                 <td>
@@ -40,7 +49,7 @@ export function Transactions() {
                 </td>
                 <td>{transaction.category.toUpperCase()}</td>
                 <td>{transaction.created_At}
-                 <button onClick={async () => await deleteTransaction(transaction.id)}>
+                 <button onClick={async () => await deleteTransactionContext(transaction.id)}>
                  <Trash color="#F75A68" size={20}/>
                 </button>
                 </td>

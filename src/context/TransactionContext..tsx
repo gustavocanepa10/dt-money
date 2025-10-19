@@ -1,5 +1,6 @@
 import axios from "axios";
-import { createContext, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createContext } from "use-context-selector";
 
 
 interface TransactionContextProviderProps {

@@ -3,7 +3,7 @@ import { Summary } from "../../components/Summary";
 import styles from "./styles.module.css";
 import { PriceHighlight } from "../../components/PriceHighlight";
 import { SearchForm } from "../../components/SearchForm";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import { TransactionContext } from "../../context/TransactionContext.";
 import { Trash } from "phosphor-react";
@@ -13,13 +13,13 @@ export function Transactions() {
   
     
 
-    const filterSearchListContext = useContextSelector(TransactionContext, (context) => {
-      return context.filterSearchList
-    })
+   const filterSearchListContext = useContextSelector(TransactionContext, (context) => {
+    return context.filterSearchList
+   })
 
-    const deleteTransactionContext = useContextSelector(TransactionContext, (context) => {
-      return context.deleteTransaction
-    })
+   const deleteTransactionContext = useContextSelector(TransactionContext, (context) => {
+    return context.deleteTransaction
+   })
 
     const [open, setOpen] = useState(false)
 
